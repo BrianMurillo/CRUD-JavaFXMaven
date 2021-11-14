@@ -1,0 +1,37 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14 nov. 2021, 00:22:15
+    Author     : Brian54
+*/
+
+.fondo-login{
+    -fx-background-color: #90e0ef;
+}
+
+.pane-login{
+    -fx-background-color: white;
+    -fx-border-radius:80px;
+    -fx-background-radius: 30px;
+    -fx-opacity:0.8;
+}
+
+.titulo-login{
+    -fx-font-size: 100px;
+    -fx-alignment: center;
+    -fx-text-alignment: center; 
+    -fx-text-fill:white;
+    -fx-font-family: "Brush Script MT";
+}
+
+.subtitulo-login{
+    -fx-font-size: 20px;
+    -fx-alignment: center;
+    -fx-text-alignment: center; 
+    -fx-text-fill: white;
+    -fx-font-family: "Courier New";
+    -fx-opacity:0.8;
+}
