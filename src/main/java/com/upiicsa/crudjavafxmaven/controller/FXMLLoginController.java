@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -31,8 +32,6 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private Button btnMaximiza;
     @FXML
-    private Button buttonMinimiza;
-    @FXML
     private TextField txtEmailLogin;
     @FXML
     private PasswordField txtPasswordLogin;
@@ -44,7 +43,10 @@ public class FXMLLoginController implements Initializable {
     private Button btnRegisterLogin;
     @FXML
     private Label lblOlvidastePassword;
-
+    Alert information = new Alert(Alert.AlertType.INFORMATION);
+    @FXML
+    private Button btnMinimiza;
+    private int contador=2;
     /**
      * Initializes the controller class.
      */
@@ -55,14 +57,25 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void btnCerrarOnAction(ActionEvent event) {
+        Stage stage = (Stage) this.btnCerrar.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     private void btnMaximizaOnAction(ActionEvent event) {
+        Stage stage = (Stage) this.btnMaximiza.getScene().getWindow();
+        if(contador%2 == 0){
+            stage.setMaximized(true);
+        } else {
+            stage.setMaximized(false);
+        }
+        contador++;
     }
 
     @FXML
-    private void buttonMinimizaOnAction(ActionEvent event) {
+    private void btnMinimizaOnAction(ActionEvent event) {
+        Stage stage = (Stage) this.btnMinimiza.getScene().getWindow();
+        stage.setIconified(true);
     }
     
     @FXML
@@ -83,7 +96,6 @@ public class FXMLLoginController implements Initializable {
             if(!"".equals(txtEmailLogin.getText())){
                 txtPasswordLogin.requestFocus();
             } else {
-                Alert information = new Alert(Alert.AlertType.INFORMATION);
                 information.setTitle("Información");
                 //Para mostrar una ventana tradicional el parametro sera null del headertext
                 information.setHeaderText("Ingrese un correo electronico");
@@ -91,5 +103,5 @@ public class FXMLLoginController implements Initializable {
                 information.showAndWait();
             }
         }   
-    }
+    } 
 }
