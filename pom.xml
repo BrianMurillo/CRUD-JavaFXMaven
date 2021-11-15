@@ -20,6 +20,16 @@
             <artifactId>javafx-fxml</artifactId>
             <version>13</version>
         </dependency>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>9.2.0.jre15</version>
+        </dependency>
+        <dependency>
+            <groupId>de.mkammerer</groupId>
+            <artifactId>argon2-jvm</artifactId>
+            <version>2.5</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -78,6 +88,40 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-dependency-plugin</artifactId>
+              <configuration>
+                  <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                  <excludeTransitive>false</excludeTransitive> 
+                  <stripVersion>false</stripVersion>
+              </configuration>
+              <executions>
+                  <execution>
+                      <id>copy-dependencies</id>
+                      <phase>package</phase>
+                      <goals>
+                          <goal>copy-dependencies</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
+    
+          <!-- Agrega la referencia del contenido de la carpeta "lib" en el classpath de tu proyecto-->
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-jar-plugin</artifactId>
+              <version>2.4</version>
+              <configuration>
+                  <archive>
+                      <manifest>
+                          <addClasspath>true</addClasspath>
+                          <classpathPrefix>lib/</classpathPrefix>
+                          <mainClass>com.system.systemjavafx.Main</mainClass>
+                      </manifest>
+                  </archive>
+              </configuration>
+          </plugin>
         </plugins>
     </build>
 </project>
