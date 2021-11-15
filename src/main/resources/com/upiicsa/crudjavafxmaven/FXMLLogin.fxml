@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.effect.ColorAdjust?>
@@ -16,6 +17,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Arc?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="593.0" prefWidth="939.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.upiicsa.crudjavafxmaven.controller.FXMLLoginController">
    <children>
@@ -33,23 +35,26 @@
                   </ImageView>
                   <VBox layoutX="7.0" layoutY="139.0" prefHeight="375.0" prefWidth="370.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <Pane prefHeight="220.0" prefWidth="370.0">
+                        <Pane prefHeight="222.0" prefWidth="370.0">
                            <children>
-                              <HBox layoutX="33.0" layoutY="14.0" prefHeight="39.0" prefWidth="300.0" styleClass="bordertext">
+                              <HBox layoutX="39.0" layoutY="36.0" prefHeight="39.0" prefWidth="293.0" styleClass="bordertext">
                                  <children>
                                     <Pane prefHeight="200.0" prefWidth="200.0" styleClass="fondo-login">
                                        <children>
-                                          <ImageView fitHeight="37.0" fitWidth="47.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="37.0" fitWidth="47.0" layoutX="3.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@img/usuario.png" />
                                              </image>
                                           </ImageView>
                                        </children>
                                     </Pane>
-                                    <Pane prefHeight="37.0" prefWidth="407.0" />
+                                    <Pane prefHeight="37.0" prefWidth="407.0">
+                                       <children>
+                                          <TextField fx:id="txtEmailLogin" layoutX="2.0" layoutY="1.0" onKeyPressed="#txtLoginOnKeyPressed" prefHeight="37.0" prefWidth="243.0" promptText="muso54@gmail.com" styleClass="txt-logeo" />
+                                       </children></Pane>
                                  </children>
                               </HBox>
-                              <HBox layoutX="33.0" layoutY="79.0" prefHeight="39.0" prefWidth="300.0" styleClass="bordertext">
+                              <HBox layoutX="39.0" layoutY="120.0" prefHeight="39.0" prefWidth="293.0" styleClass="bordertext">
                                  <children>
                                     <Pane prefHeight="209.0" prefWidth="200.0" styleClass="fondo-login">
                                        <children>
@@ -60,9 +65,26 @@
                                           </ImageView>
                                        </children>
                                     </Pane>
-                                    <Pane prefHeight="37.0" prefWidth="407.0">
+                                    <Pane prefHeight="39.0" prefWidth="364.0">
                                        <children>
-                                          <PasswordField prefHeight="36.0" prefWidth="250.0" promptText="*********" styleClass="txt-logeo" />
+                                          <PasswordField fx:id="txtPasswordLogin" layoutX="1.0" layoutY="1.0" prefHeight="37.0" prefWidth="205.0" promptText="*********" styleClass="txt-logeo" />
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="fondo-login">
+                                       <children>
+                                          <Button fx:id="btnVerPassLogin" layoutX="6.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnVerPassLoginOnAction" prefHeight="24.0" prefWidth="22.0">
+                                             <graphic>
+                                                <ImageView fitHeight="15.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/ver.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="fondo-login" />
+                                                <String fx:value="ver-pass" />
+                                             </styleClass>
+                                          </Button>
                                        </children>
                                     </Pane>
                                  </children>
@@ -74,16 +96,21 @@
                         </Pane>
                         <Pane prefHeight="206.0" prefWidth="370.0">
                            <children>
-                              <Button layoutX="40.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="293.0" text="Login">
+                              <Button fx:id="btnLogin" layoutX="40.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnRegisterLoginOnAction" prefHeight="45.0" prefWidth="293.0" text="Login">
                                  <styleClass>
                                     <String fx:value="button-ventana" />
                                     <String fx:value="button-logeo" />
                                  </styleClass></Button>
-                              <Button layoutX="40.0" layoutY="68.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="293.0" text="Register">
+                              <Button fx:id="btnRegisterLogin" layoutX="40.0" layoutY="96.0" mnemonicParsing="false" onAction="#btnRegisterLoginOnAction" prefHeight="45.0" prefWidth="293.0" text="Register">
                                  <styleClass>
                                     <String fx:value="button-ventana" />
                                     <String fx:value="button-logeo" />
                                  </styleClass></Button>
+                              <Label fx:id="lblOlvidastePassword" alignment="CENTER" contentDisplay="CENTER" layoutX="124.0" layoutY="150.0" onMouseClicked="#lblOlvidastePasswordOnMouseClicked" prefHeight="17.0" prefWidth="125.0" styleClass="olvido-contrasena" text="¿Olvidaste Contraseña?">
+                                 <font>
+                                    <Font size="9.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </Pane>
                      </children>

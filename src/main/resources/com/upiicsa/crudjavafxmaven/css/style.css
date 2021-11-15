@@ -43,7 +43,7 @@ and open the template in the editor.
 .button-logeo{
     -fx-background-radius: 10px;
     -fx-text-fill:white;
-    -fx-font-size:23px;
+    -fx-font-size:20px;
     -fx-font-family: sans-serif;
 }
 
@@ -51,6 +51,16 @@ and open the template in the editor.
     -fx-border-radius: 10px;
     -fx-border-color: black;
     -fx-border-width: .3px;
+    -fx-font-size:25px;
+}
+
+.button-logeo:pressed{
+    -fx-border-radius: 10px;
+    -fx-border-color: black;
+    -fx-border-width: .3px;
+    -fx-font-size:25px;
+    -fx-background-color:white;
+    -fx-text-fill:black;
 }
 
 .txt-logeo{
@@ -67,4 +77,17 @@ and open the template in the editor.
 
 .border-text:hover{
     -fx-border-width: 3px;
+}
+
+.olvido-contrasena{
+    -fx-font-size:10px;
+}
+
+.olvido-contrasena:hover{
+    -fx-font-size:12px;
+    -fx-underline:true;
+}
+
+.ver-pass:pressed{
+    -fx-rotate: 45;
 }
