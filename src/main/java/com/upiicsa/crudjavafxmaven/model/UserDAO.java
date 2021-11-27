@@ -20,7 +20,7 @@ public class UserDAO {
     private Conexion conexion = Conexion.getInstance();
     
     private boolean registrarUsuario(User user){
-        String sql="INSERT INTO(nombre,apellido_paterno,apellido_materno,edad,telefono,email,password,palabra_secreta) VALUES(?,?,?,?,?,?,?,?)";
+        String sql="INSERT INTO(nombre,apellido_paterno,apellido_materno,edad,telefono,email,password,palabra_secreta,rol) VALUES(?,?,?,?,?,?,?,?,?)";
         try {
             con = conexion.Conectar();
             ps = con.prepareStatement(sql);
@@ -32,6 +32,7 @@ public class UserDAO {
             ps.setString(6, user.getEmail());
             ps.setString(7, user.getPassword());
             ps.setString(8, user.getPalabraSecreta());
+            ps.setString(9, "Empleado");
             ps.executeUpdate();
             return true;
         } catch (SQLException e) {

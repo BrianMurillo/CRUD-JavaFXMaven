@@ -19,6 +19,7 @@ public class User {
     private String email;
     private String password;
     private String palabraSecreta;
+    private String rol;
 
     public User() {
     }
@@ -94,4 +95,12 @@ public class User {
     public void setPalabraSecreta(String palabraSecreta) {
         this.palabraSecreta = palabraSecreta;
     }   
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 }
