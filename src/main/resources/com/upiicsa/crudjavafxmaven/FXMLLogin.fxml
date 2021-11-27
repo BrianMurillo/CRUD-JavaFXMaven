@@ -38,7 +38,7 @@
                                        <children>
                                           <ImageView fitHeight="37.0" fitWidth="47.0" layoutX="3.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@img/usuario.png" />
+                                                <Image url="@/com/upiicsa/crudjavafxmaven/img/usuario.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -55,7 +55,7 @@
                                        <children>
                                           <ImageView fitHeight="37.0" fitWidth="47.0" layoutX="3.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@img/contrasena.png" />
+                                                <Image url="@/com/upiicsa/crudjavafxmaven/img/contrasena.png" />
                                              </image>
                                           </ImageView>
                                        </children>
@@ -72,7 +72,7 @@
                                              <graphic>
                                                 <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
-                                                      <Image url="@img/ver.png" />
+                                                      <Image url="@/com/upiicsa/crudjavafxmaven/img/ver.png" />
                                                    </image>
                                                 </ImageView>
                                              </graphic>
@@ -90,12 +90,12 @@
                               </HBox>
                               <Text layoutX="111.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titulo-welcome" text="Welcome" textAlignment="CENTER" wrappingWidth="147.576171875" />
                               <ImageView blendMode="MULTIPLY" fitHeight="125.0" fitWidth="137.0" layoutX="123.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@img/llave.png" />
-                                 </image>
                                  <effect>
                                     <Blend mode="SCREEN" />
                                  </effect>
+                                 <image>
+                                    <Image url="@/com/upiicsa/crudjavafxmaven/img/llave.png" />
+                                 </image>
                               </ImageView>
                            </children>
                         </Pane>
@@ -136,7 +136,7 @@
                <graphic>
                   <ImageView fitHeight="230.0" fitWidth="245.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/logoneutrales2.png" />
+                        <Image url="@/com/upiicsa/crudjavafxmaven/img/logoneutrales2.png" />
                      </image>
                      <effect>
                         <BoxBlur height="6.07" width="200.36" />
@@ -148,7 +148,7 @@
                <graphic>
                   <ImageView fitHeight="215.0" fitWidth="248.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/logoneutrales2.png" />
+                        <Image url="@/com/upiicsa/crudjavafxmaven/img/logoneutrales2.png" />
                      </image>
                      <effect>
                         <ColorAdjust brightness="0.36" contrast="0.4" hue="-0.28" saturation="-1.0" />
@@ -168,7 +168,7 @@
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/botoncerrar.png" />
+                        <Image url="@/com/upiicsa/crudjavafxmaven/img/botoncerrar.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -177,7 +177,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/botonmaximizar.png" />
+                        <Image url="@/com/upiicsa/crudjavafxmaven/img/botonmaximizar.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -186,7 +186,7 @@
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/botonminimizar.png" />
+                        <Image url="@/com/upiicsa/crudjavafxmaven/img/botonminimizar.png" />
                      </image>
                   </ImageView>
                </graphic>

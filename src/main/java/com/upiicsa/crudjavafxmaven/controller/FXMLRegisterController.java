@@ -5,18 +5,26 @@
  */
 package com.upiicsa.crudjavafxmaven.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -126,6 +134,24 @@ public class FXMLRegisterController implements Initializable {
 
     @FXML
     private void btnBackOnAction(ActionEvent event) {
+        try {
+            Stage stage2 = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            AnchorPane root = (AnchorPane)loader.load(getClass().getResource("/com/upiicsa/crudjavafxmaven/FXMLLogin.fxml").openStream());
+            
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/com/upiicsa/crudjavafxmaven/css/style.css").toExternalForm());
+            stage2.setScene(scene);
+            stage2.alwaysOnTopProperty();
+            stage2.initStyle(StageStyle.UNDECORATED);
+            stage2.initModality(Modality.APPLICATION_MODAL);
+            stage2.show();
+            
+            Stage stag = (Stage) btnBack.getScene().getWindow();
+            stag.close();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }   
     }   
 
     @FXML
@@ -140,5 +166,13 @@ public class FXMLRegisterController implements Initializable {
             txtPassword.setText(txtVerPassword.getText());
         }
         verPass++;
+    }
+    
+    public void mostrarInformacion(String titulo, String mensaje) {
+        information.setTitle(titulo);
+        //Para mostrar una ventana tradicional el parametro sera null del headertext
+        information.setHeaderText(null);
+        information.setContentText(mensaje);
+        information.showAndWait();
     }
 }
