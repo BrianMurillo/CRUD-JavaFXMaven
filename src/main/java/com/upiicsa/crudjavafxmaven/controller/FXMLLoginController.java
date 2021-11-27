@@ -5,9 +5,13 @@
  */
 package com.upiicsa.crudjavafxmaven.controller;
 
+import com.upiicsa.crudjavafxmaven.model.Conexion;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -53,6 +57,8 @@ public class FXMLLoginController implements Initializable {
     private int verPass=2;
     @FXML
     private TextField txtVerPassword;
+    Conexion instanciaSQL = Conexion.getInstance();
+
     /**
      * Initializes the controller class.
      */
@@ -127,4 +133,15 @@ public class FXMLLoginController implements Initializable {
             }
         }   
     } 
+
+    @FXML
+    private void btnLoginOnAction(ActionEvent event) {
+        try {
+            instanciaSQL.Conectar();
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        } catch (NullPointerException e){
+            System.out.println(e.toString());
+        }
+    }
 }

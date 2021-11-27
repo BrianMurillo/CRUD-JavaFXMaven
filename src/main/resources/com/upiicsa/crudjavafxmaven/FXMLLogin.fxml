@@ -101,7 +101,7 @@
                         </Pane>
                         <Pane prefHeight="206.0" prefWidth="370.0">
                            <children>
-                              <Button fx:id="btnLogin" layoutX="40.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnRegisterLoginOnAction" prefHeight="45.0" prefWidth="293.0" text="Login">
+                              <Button fx:id="btnLogin" layoutX="40.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="45.0" prefWidth="293.0" text="Login">
                                  <styleClass>
                                     <String fx:value="button-ventana" />
                                     <String fx:value="button-logeo" />
