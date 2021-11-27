@@ -6,12 +6,14 @@
 package com.upiicsa.crudjavafxmaven.controller;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -44,6 +46,7 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private Label lblOlvidastePassword;
     Alert information = new Alert(Alert.AlertType.INFORMATION);
+    Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
     @FXML
     private Button btnMinimiza;
     private int contador=2;
@@ -57,8 +60,15 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void btnCerrarOnAction(ActionEvent event) {
-        Stage stage = (Stage) this.btnCerrar.getScene().getWindow();
-        stage.close();
+        alerta.setTitle("Confirmación");
+        alerta.setHeaderText(null);
+        alerta.setContentText("¿Desea cerrar la aplicación?");
+        
+        Optional<ButtonType> result = alerta.showAndWait();
+        if(result.get() == ButtonType.OK){
+            Stage stage = (Stage) this.btnCerrar.getScene().getWindow();
+            stage.close();
+        }
     }
 
     @FXML
@@ -74,10 +84,10 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void btnMinimizaOnAction(ActionEvent event) {
-        Stage stage = (Stage) this.btnMinimiza.getScene().getWindow();
-        stage.setIconified(true);
+            Stage stage = (Stage) this.btnMinimiza.getScene().getWindow();
+            stage.setIconified(true);
     }
-    
+ 
     @FXML
     private void btnVerPassLoginOnAction(ActionEvent event) {
     }
