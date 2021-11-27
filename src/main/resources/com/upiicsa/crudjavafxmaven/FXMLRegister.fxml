@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Arc?>
+
+<AnchorPane id="AnchorPane" opacity="0.78" prefHeight="561.0" prefWidth="854.0" styleClass="pane-login" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.upiicsa.crudjavafxmaven.controller.FXMLRegisterController">
+   <children>
+      <AnchorPane layoutX="46.0" layoutY="29.0" prefHeight="561.0" prefWidth="460.0" styleClass="pane-register" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="394.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" layoutX="170.0" layoutY="441.0" prefHeight="120.0" prefWidth="120.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="441.0">
+               <graphic>
+                  <ImageView fitHeight="120.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/logoneutrales.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label alignment="CENTER" layoutX="170.0" layoutY="14.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="120.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                     <image>
+                        <Image url="@img/logoneutrales.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label alignment="CENTER" layoutX="170.0" layoutY="221.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="170.0">
+               <graphic>
+                  <ImageView fitHeight="120.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/bigdata.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label layoutX="20.0" layoutY="132.0" prefHeight="274.0" prefWidth="420.0" styleClass="titulo-login" text="Neutrales Digital" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+            <Arc blendMode="BLUE" cache="true" fill="DODGERBLUE" layoutX="102.0" layoutY="280.0" length="270.0" radiusX="100.0" radiusY="100.0" startAngle="45.0" stroke="BLACK" strokeType="OUTSIDE" type="ROUND" AnchorPane.leftAnchor="0.0" />
+            <Arc blendMode="BLUE" cache="true" fill="DODGERBLUE" layoutX="387.0" layoutY="280.0" length="270.0" nodeOrientation="RIGHT_TO_LEFT" radiusX="100.0" radiusY="100.0" startAngle="45.0" stroke="BLACK" strokeType="OUTSIDE" type="ROUND" AnchorPane.rightAnchor="0.0" />
+         </children></AnchorPane>
+      <AnchorPane layoutX="460.0" prefHeight="561.0" prefWidth="395.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <AnchorPane prefHeight="143.0" prefWidth="365.0">
+                     <children>
+                        <Label alignment="CENTER" styleClass="titulo-welcome" text="Welcome" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0" />
+                        <Button fx:id="btnMinimiza" layoutX="265.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnMinimizaOnAction" prefHeight="16.0" prefWidth="17.0" styleClass="cerrar-minimiza-maximiza">
+                           <graphic>
+                              <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/botonminimizar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnMaximiza" layoutX="299.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnMaximizaOnAction" prefHeight="16.0" prefWidth="17.0" styleClass="cerrar-minimiza-maximiza">
+                           <graphic>
+                              <ImageView fitHeight="17.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/botonmaximizar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnCerrar" layoutX="331.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnCerrarOnAction" prefHeight="16.0" prefWidth="17.0" styleClass="cerrar-minimiza-maximiza">
+                           <graphic>
+                              <ImageView fitHeight="17.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/botoncerrar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="365.0" styleClass="bordertext" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="44.0" styleClass="fondo-login">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="8.0" layoutY="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <graphic>
+                                          <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/pregunta.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="67.0" prefWidth="316.0">
+                                 <children>
+                                    <TextField fx:id="txtNombre" layoutY="2.0" promptText="Nombre" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="365.0" styleClass="bordertext" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="44.0" styleClass="fondo-login">
+                                 <children>
+                                    <Label alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <graphic>
+                                          <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/pregunta.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="67.0" prefWidth="316.0">
+                                 <children>
+                                    <TextField fx:id="txtAPaterno" layoutY="2.0" promptText="Apellido Paterno" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="365.0" styleClass="bordertext" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="44.0" styleClass="fondo-login">
+                                 <children>
+                                    <Label alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <graphic>
+                                          <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/pregunta.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="67.0" prefWidth="316.0">
+                                 <children>
+                                    <TextField fx:id="txtAMaterno" layoutY="2.0" promptText="Apellido materno" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="365.0" styleClass="bordertext" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="44.0" styleClass="fondo-login">
+                                 <children>
+                                    <Label alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <graphic>
+                                          <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/pregunta.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="67.0" prefWidth="316.0">
+                                 <children>
+                                    <TextField fx:id="txtEdad" layoutY="2.0" promptText="Edad" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="365.0" styleClass="bordertext" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="44.0" styleClass="fondo-login">
+                                 <children>
+                                    <Label alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <graphic>
+                                          <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/pregunta.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="67.0" prefWidth="316.0">
+                                 <children>
+                                    <TextField fx:id="txtTelefono" layoutY="2.0" promptText="Telefono" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="365.0" styleClass="bordertext" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="44.0" styleClass="fondo-login">
+                                 <children>
+                                    <Label alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <graphic>
+                                          <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/pregunta.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="67.0" prefWidth="316.0">
+                                 <children>
+                                    <TextField fx:id="txtEmail" layoutY="2.0" promptText="Correo Electronico" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="365.0" styleClass="bordertext" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="44.0" styleClass="fondo-login">
+                                 <children>
+                                    <Label alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <graphic>
+                                          <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/pregunta.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="45.0" prefWidth="275.0">
+                                 <children>
+                                    <PasswordField fx:id="txtPassword" layoutX="7.0" prefHeight="43.0" prefWidth="274.0" promptText="Contraseña" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="45.0" prefWidth="49.0" styleClass="fondo-login">
+                                 <children>
+                                    <Button fx:id="btnVerContraseña" layoutX="-2.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnVerContraseñaOnAction" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="5.0">
+                                       <graphic>
+                                          <ImageView fitHeight="17.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/ver.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <styleClass>
+                                          <String fx:value="ver-pass" />
+                                          <String fx:value="fondo-login" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="365.0" styleClass="bordertext" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="44.0" styleClass="fondo-login">
+                                 <children>
+                                    <Label alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <graphic>
+                                          <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/pregunta.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="45.0" prefWidth="275.0">
+                                 <children>
+                                    <PasswordField fx:id="txtConfirmarPassword" layoutX="7.0" prefHeight="43.0" prefWidth="274.0" promptText="Confirma Contraseña" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="45.0" prefWidth="49.0" styleClass="fondo-login">
+                                 <children>
+                                    <Button fx:id="btnVerContraseñaConfirmar" mnemonicParsing="false" onAction="#btnVerContraseñaConfirmarOnAction" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="5.0">
+                                       <graphic>
+                                          <ImageView fitHeight="17.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/ver.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <styleClass>
+                                          <String fx:value="ver-pass" />
+                                          <String fx:value="fondo-login" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="365.0" styleClass="bordertext" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="44.0" styleClass="fondo-login">
+                                 <children>
+                                    <Label alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <graphic>
+                                          <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/pregunta.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="67.0" prefWidth="316.0">
+                                 <children>
+                                    <TextField fx:id="txtPalabraSecreta" layoutY="2.0" promptText="Palabra Secreta" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="34.0" prefWidth="365.0">
+                     <children>
+                        <Button fx:id="btnRegister" layoutX="50.0" layoutY="3.0" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="16.0" prefWidth="265.0" text="Register" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+                           <styleClass>
+                              <String fx:value="button-logeo" />
+                              <String fx:value="button-ventana" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="365.0">
+                     <children>
+                        <Button fx:id="btnBack" layoutX="50.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnBackOnAction" text="Back" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+                           <styleClass>
+                              <String fx:value="button-logeo" />
+                              <String fx:value="button-ventana" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
