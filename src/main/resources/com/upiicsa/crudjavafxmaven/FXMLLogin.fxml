@@ -111,7 +111,7 @@
                                     <String fx:value="button-ventana" />
                                     <String fx:value="button-logeo" />
                                  </styleClass></Button>
-                              <Label fx:id="lblOlvidastePassword" alignment="CENTER" contentDisplay="CENTER" layoutX="124.0" layoutY="150.0" onMouseClicked="#lblOlvidastePasswordOnMouseClicked" prefHeight="17.0" prefWidth="125.0" styleClass="olvido-contrasena" text="¿Forgot Password?">
+                              <Label fx:id="lblOlvidastePassword" alignment="CENTER" contentDisplay="CENTER" layoutX="124.0" layoutY="150.0" onMouseClicked="#lblOlvidastePasswordOnMouseClicked" prefHeight="17.0" prefWidth="125.0" styleClass="olvido-contrasena" text="Forgot Password?">
                                  <font>
                                     <Font size="9.0" />
                                  </font>
