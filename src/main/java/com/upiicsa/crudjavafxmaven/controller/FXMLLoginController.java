@@ -50,6 +50,9 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private Button btnMinimiza;
     private int contador=2;
+    private int verPass=2;
+    @FXML
+    private TextField txtVerPassword;
     /**
      * Initializes the controller class.
      */
@@ -90,6 +93,16 @@ public class FXMLLoginController implements Initializable {
  
     @FXML
     private void btnVerPassLoginOnAction(ActionEvent event) {
+        if(verPass%2 == 0){
+            txtPasswordLogin.setVisible(false);
+            txtVerPassword.setVisible(true);
+            txtVerPassword.setText(txtPasswordLogin.getText());
+        } else {
+            txtVerPassword.setVisible(false);
+            txtPasswordLogin.setVisible(true);
+            txtPasswordLogin.setText(txtVerPassword.getText());
+        }
+        verPass++;
     }
 
     @FXML
