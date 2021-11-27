@@ -10,8 +10,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -125,11 +123,7 @@ public class FXMLLoginController implements Initializable {
             if(!"".equals(txtEmailLogin.getText())){
                 txtPasswordLogin.requestFocus();
             } else {
-                information.setTitle("Información");
-                //Para mostrar una ventana tradicional el parametro sera null del headertext
-                information.setHeaderText("Ingrese un correo electronico");
-                information.setContentText("Ejemplo:  bmurillo@gmail.com");
-                information.showAndWait();
+                mostrarInformacion("Error", "Ejemplo:  bmurillo@gmail.com");
             }
         }   
     } 
@@ -137,11 +131,23 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private void btnLoginOnAction(ActionEvent event) {
         try {
-            instanciaSQL.Conectar();
+            if (!"".equals(txtEmailLogin.getText()) && !"".equals(txtPasswordLogin.getText())) {
+                instanciaSQL.Conectar();
+            } else {
+                mostrarInformacion("Error", "Ingresar Usuario y Password");
+            }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         } catch (NullPointerException e){
             System.out.println(e.toString());
         }
+    }
+    
+    public void mostrarInformacion(String titulo, String mensaje) {
+        information.setTitle(titulo);
+        //Para mostrar una ventana tradicional el parametro sera null del headertext
+        information.setHeaderText(null);
+        information.setContentText(mensaje);
+        information.showAndWait();
     }
 }

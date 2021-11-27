@@ -5,7 +5,6 @@
  */
 package com.upiicsa.crudjavafxmaven.model;
 
-import com.upiicsa.crudjavafxmaven.utilerias.Propiedades;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,29 +18,23 @@ import javafx.scene.control.Alert;
  */
 public class Conexion {
     private static Conexion instancia = null;
-    Propiedades propiedades = new Propiedades();
     Alert pantallaInformacion = new Alert(Alert.AlertType.INFORMATION);
     Connection conexion = null;
+    private String user = "demo-54";
+    private String pass = "admin$54";
+    String url = "jdbc:sqlserver://servidor-54.database.windows.net:1433;database=demoSQL;user=" + user + "@servidor-54;password=" + pass + ";encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 
     private Conexion() {
     }
  
     public Connection Conectar() throws SQLException{
-        try {     
-            Properties properties = propiedades.cargarArchivo();
-            String user = properties.getProperty("conexion.user");
-            String pass = properties.getProperty("conexion.password");
-            
-            String url = "jdbc:sqlserver://servidor-54.database.windows.net:1433;database=demoSQL;user=" + user + "@servidor-54;password=" + pass + ";encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+        try {              
             conexion=DriverManager.getConnection(url);
-            
             mostrarVentanaInformativa("Infomación", "Conexion Establecida");            
         } catch (SQLException e) {
             System.out.println(e.toString());
             System.out.println("Error de conexion");
             mostrarVentanaInformativa("Infomación", e.toString());
-        } catch (IOException e){
-            System.out.println(e.toString());
         } finally {
             conexion.close();
         }
