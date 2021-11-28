@@ -25,6 +25,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -140,6 +142,10 @@ public class FXMLRegisterController implements Initializable {
 
     @FXML
     private void btnRegisterOnAction(ActionEvent event) {
+        registrarUsuario();
+    }
+    
+    public void registrarUsuario(){
         boolean resultadoRegistro;
         if(!"".equals(txtNombre.getText()) && !"".equals(txtAPaterno.getText()) && !"".equals(txtAMaterno.getText()) && !"".equals(txtEdad.getText()) && !"".equals(txtEmail.getText()) && !"".equals(txtPassword.getText()) && !"".equals(txtPalabraSecreta.getText())){
             if (txtPassword.getText().equals(txtConfirmarPassword.getText())) {
@@ -230,5 +236,100 @@ public class FXMLRegisterController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
         }   
+    }
+
+    @FXML
+    private void txtNombreOnKeyPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER){
+            if(!"".equals(txtNombre.getText())){
+                txtAPaterno.requestFocus();
+            } else {
+                mostrarInformacion("Información", "Ingresar Nombre");
+            }
+        }  
+    }
+
+    @FXML
+    private void txtAPaternoOnKeyPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER){
+            if(!"".equals(txtAPaterno.getText())){
+                txtAMaterno.requestFocus();
+            } else {
+                mostrarInformacion("Infomación", "Ingresar Apellido Paterno");
+            }
+        } 
+    }
+
+    @FXML
+    private void txtAMaternoOnKeyPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER){
+            if(!"".equals(txtAMaterno.getText())){
+                txtEdad.requestFocus();
+            } else {
+                mostrarInformacion("Información", "Ingresar Apellido Materno");
+            }
+        } 
+    }
+
+    @FXML
+    private void txtEdadOnKeypressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER){
+            if(!"".equals(txtEdad.getText())){
+                txtTelefono.requestFocus();
+            } else {
+                mostrarInformacion("Información", "Ingresar Edad");
+            }
+        } 
+    }
+
+    @FXML
+    private void txtTelefonoOnKeyPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER){
+            txtEmail.requestFocus();
+        }
+    }
+
+    @FXML
+    private void txtEmailOnKeyPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER){
+            if(!"".equals(txtEmail.getText())){
+                txtPassword.requestFocus();
+            } else {
+                mostrarInformacion("Información", "Ingresar Email");
+            }
+        } 
+    }
+
+    @FXML
+    private void txtPassAOnKeyPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER){
+            if(!"".equals(txtPassword.getText())){
+                txtConfirmarPassword.requestFocus();
+            } else {
+                mostrarInformacion("Información", "Ingresar Password");
+            }
+        }
+    }
+
+    @FXML
+    private void txtPassBOnKeyPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER){
+            if(!"".equals(txtConfirmarPassword.getText())){
+                txtPalabraSecreta.requestFocus();
+            } else {
+                mostrarInformacion("Información", "Ingresar Password");
+            }
+        }
+    }
+
+    @FXML
+    private void txtPalabraSecretaOnKeyPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER){
+            if(!"".equals(txtPalabraSecreta.getText())){
+                registrarUsuario();
+            } else {
+                mostrarInformacion("Información", "Ingresar una palabra clave, la cual sera necesaria para cuando requiera cambiar contraseña");
+            }
+        }
     }
 }

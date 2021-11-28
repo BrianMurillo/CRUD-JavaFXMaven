@@ -153,23 +153,25 @@ public class FXMLLoginController implements Initializable {
             if(!"".equals(txtEmailLogin.getText())){
                 txtPasswordLogin.requestFocus();
             } else {
-                mostrarInformacion("Error", "Ejemplo:  bmurillo@gmail.com");
+                mostrarInformacion("Información", "Ingresar Email");
             }
         }   
     } 
 
     @FXML
     private void btnLoginOnAction(ActionEvent event) {
+        iniciarSesion();
+    }
+    
+    public void iniciarSesion(){
         try {
             if (!"".equals(txtEmailLogin.getText()) && !"".equals(txtPasswordLogin.getText())) {
                 instanciaSQL.Conectar();
             } else {
-                mostrarInformacion("Error", "Ingresar Usuario y Password");
+                mostrarInformacion("Información", "Ingresar Usuario y Password");
             }
-        } catch (SQLException ex) {
+        } catch (SQLException | NullPointerException ex) {
             System.out.println(ex.toString());
-        } catch (NullPointerException e){
-            System.out.println(e.toString());
         }
     }
     
@@ -184,5 +186,16 @@ public class FXMLLoginController implements Initializable {
     public void recibirDatos(String email,String pass){
         txtEmailLogin.setText(email);
         txtPasswordLogin.setText(pass);
+    }
+
+    @FXML
+    private void txtPassOnKeyPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER){
+            if(!"".equals(txtPasswordLogin.getText())){
+                iniciarSesion();
+            } else {
+                mostrarInformacion("Información", "Ingresar Password");
+            }
+        }
     }
 }

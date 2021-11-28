@@ -102,7 +102,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="67.0" prefWidth="316.0">
                                  <children>
-                                    <TextField fx:id="txtNombre" layoutY="2.0" promptText="Nombre" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                    <TextField fx:id="txtNombre" layoutY="2.0" onKeyPressed="#txtNombreOnKeyPressed" promptText="Nombre" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -128,7 +128,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="67.0" prefWidth="316.0">
                                  <children>
-                                    <TextField fx:id="txtAPaterno" layoutY="2.0" promptText="Apellido Paterno" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                    <TextField fx:id="txtAPaterno" layoutY="2.0" onKeyPressed="#txtAPaternoOnKeyPressed" promptText="Apellido Paterno" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -154,7 +154,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="67.0" prefWidth="316.0">
                                  <children>
-                                    <TextField fx:id="txtAMaterno" layoutY="2.0" promptText="Apellido Materno" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                    <TextField fx:id="txtAMaterno" layoutY="2.0" onKeyPressed="#txtAMaternoOnKeyPressed" promptText="Apellido Materno" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -180,7 +180,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="67.0" prefWidth="316.0">
                                  <children>
-                                    <TextField fx:id="txtEdad" layoutY="2.0" promptText="Edad" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                    <TextField fx:id="txtEdad" layoutY="2.0" onKeyPressed="#txtEdadOnKeypressed" promptText="Edad" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -206,7 +206,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="67.0" prefWidth="316.0">
                                  <children>
-                                    <TextField fx:id="txtTelefono" layoutY="2.0" promptText="Telefono" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                    <TextField fx:id="txtTelefono" layoutY="2.0" onKeyPressed="#txtTelefonoOnKeyPressed" promptText="Telefono" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -232,7 +232,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="67.0" prefWidth="316.0">
                                  <children>
-                                    <TextField fx:id="txtEmail" layoutY="2.0" promptText="Correo Electronico" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                    <TextField fx:id="txtEmail" layoutY="2.0" onKeyPressed="#txtEmailOnKeyPressed" promptText="Correo Electronico" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -259,7 +259,7 @@
                               <AnchorPane prefHeight="41.0" prefWidth="273.0">
                                  <children>
                                     <TextField fx:id="txtVerPassword" layoutY="3.0" prefHeight="37.0" prefWidth="272.0" promptText="Contraseña" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
-                                    <PasswordField fx:id="txtPassword" layoutX="7.0" prefHeight="43.0" prefWidth="274.0" promptText="Contraseña" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                    <PasswordField fx:id="txtPassword" layoutX="7.0" onKeyPressed="#txtPassAOnKeyPressed" prefHeight="43.0" prefWidth="274.0" promptText="Contraseña" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="41.0" prefWidth="49.0" styleClass="fondo-login">
@@ -303,7 +303,7 @@
                               <AnchorPane prefHeight="41.0" prefWidth="273.0">
                                  <children>
                                     <TextField fx:id="txtVerPasswordConfirm" prefHeight="37.0" prefWidth="272.0" promptText="Confirma Contraseña" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="3.0" />
-                                    <PasswordField fx:id="txtConfirmarPassword" layoutX="7.0" layoutY="3.0" prefHeight="37.0" prefWidth="268.0" promptText="Confirma Contraseña" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="3.0" />
+                                    <PasswordField fx:id="txtConfirmarPassword" layoutX="7.0" layoutY="3.0" onKeyPressed="#txtPassBOnKeyPressed" prefHeight="37.0" prefWidth="268.0" promptText="Confirma Contraseña" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="3.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="41.0" prefWidth="49.0" styleClass="fondo-login">
@@ -346,7 +346,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="67.0" prefWidth="316.0">
                                  <children>
-                                    <TextField fx:id="txtPalabraSecreta" layoutY="2.0" promptText="Palabra Secreta" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                    <TextField fx:id="txtPalabraSecreta" layoutY="2.0" onKeyPressed="#txtPalabraSecretaOnKeyPressed" promptText="Palabra Secreta" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
                                  </children>
                               </AnchorPane>
                            </children>
