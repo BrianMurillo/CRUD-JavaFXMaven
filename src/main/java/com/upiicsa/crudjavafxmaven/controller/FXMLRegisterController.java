@@ -7,6 +7,8 @@ package com.upiicsa.crudjavafxmaven.controller;
 
 import com.upiicsa.crudjavafxmaven.model.User;
 import com.upiicsa.crudjavafxmaven.model.UserDAO;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -142,10 +144,16 @@ public class FXMLRegisterController implements Initializable {
                 user.setEdad(Integer.parseInt(txtEdad.getText()));
                 user.setTelefono(txtTelefono.getText());
                 user.setEmail(txtEmail.getText());
+                //Hasheamos el pass con Argon2
+                Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
                 if (verPass % 2 == 0) {
                     user.setPassword(txtPassword.getText());
+                    String hash = argon2.hash(1,1024,1,user.getPassword());
+                    user.setPassword(hash);
                 } else {
                     user.setPassword(txtVerPassword.getText());
+                    String hash = argon2.hash(1,1024,1,user.getPassword());
+                    user.setPassword(hash);
                 }
                 user.setPalabraSecreta(txtPalabraSecreta.getText());
                 resultadoRegistro = userDAO.registrarUsuario(user);
