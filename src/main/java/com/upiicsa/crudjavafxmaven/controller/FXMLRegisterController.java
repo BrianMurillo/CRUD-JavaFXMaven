@@ -80,12 +80,17 @@ public class FXMLRegisterController implements Initializable {
     private TextField txtVerPasswordConfirm;
     private User user = new User();
     private UserDAO userDAO;
+    //Scene Login
+    FXMLLoginController fxmlLoginController;
+    //Scene Register
+    FXMLRegisterController fxmlRegisterController;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.userDAO = new UserDAO();
+        fxmlRegisterController = this;
     }    
 
     @FXML
@@ -159,6 +164,7 @@ public class FXMLRegisterController implements Initializable {
                 resultadoRegistro = userDAO.registrarUsuario(user);
                 if(resultadoRegistro){
                     mostrarInformacion("Infomación", "Registro Exitoso");
+                    abrirSceneLogin();
                 } else {
                     mostrarInformacion("Información", "Error al registrar usuario");
                 }
@@ -172,24 +178,7 @@ public class FXMLRegisterController implements Initializable {
 
     @FXML
     private void btnBackOnAction(ActionEvent event) {
-        try {
-            Stage stage2 = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            AnchorPane root = (AnchorPane)loader.load(getClass().getResource("/com/upiicsa/crudjavafxmaven/FXMLLogin.fxml").openStream());
-            
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("/com/upiicsa/crudjavafxmaven/css/style.css").toExternalForm());
-            stage2.setScene(scene);
-            stage2.alwaysOnTopProperty();
-            stage2.initStyle(StageStyle.UNDECORATED);
-            stage2.initModality(Modality.APPLICATION_MODAL);
-            stage2.show();
-            
-            Stage stag = (Stage) btnBack.getScene().getWindow();
-            stag.close();
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        abrirSceneLogin();
     }   
 
     @FXML
@@ -212,5 +201,34 @@ public class FXMLRegisterController implements Initializable {
         information.setHeaderText(null);
         information.setContentText(mensaje);
         information.showAndWait();
+    }
+    
+    public void recibirDatos(String email,String pass){
+         txtEmail.setText(email);
+         txtPassword.setText(pass);
+         txtConfirmarPassword.setText(pass);
+    }
+    
+    public void abrirSceneLogin(){
+        try {
+            Stage stage2 = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            AnchorPane root = (AnchorPane)loader.load(getClass().getResource("/com/upiicsa/crudjavafxmaven/FXMLLogin.fxml").openStream());
+            fxmlLoginController = (FXMLLoginController)loader.getController();
+            fxmlLoginController.recibirDatos(txtEmail.getText(), txtPassword.getText());
+            
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/com/upiicsa/crudjavafxmaven/css/style.css").toExternalForm());
+            stage2.setScene(scene);
+            stage2.alwaysOnTopProperty();
+            stage2.initStyle(StageStyle.UNDECORATED);
+            stage2.initModality(Modality.APPLICATION_MODAL);
+            stage2.show();
+            
+            Stage stag = (Stage) btnBack.getScene().getWindow();
+            stag.close();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }   
     }
 }

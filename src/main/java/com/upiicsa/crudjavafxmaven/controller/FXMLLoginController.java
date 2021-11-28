@@ -64,13 +64,15 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private TextField txtVerPassword;
     Conexion instanciaSQL = Conexion.getInstance();
-
+    FXMLLoginController fxmlLoginController;
+    FXMLRegisterController fxmlRegisterController;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        fxmlLoginController = this;
     }    
 
     @FXML
@@ -123,6 +125,8 @@ public class FXMLLoginController implements Initializable {
             Stage stage2 = new Stage();
             FXMLLoader loader = new FXMLLoader();
             AnchorPane root = (AnchorPane)loader.load(getClass().getResource("/com/upiicsa/crudjavafxmaven/FXMLRegister.fxml").openStream());
+            fxmlRegisterController = (FXMLRegisterController)loader.getController();
+            fxmlRegisterController.recibirDatos(txtEmailLogin.getText(), txtPasswordLogin.getText());
             
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/com/upiicsa/crudjavafxmaven/css/style.css").toExternalForm());
@@ -175,5 +179,10 @@ public class FXMLLoginController implements Initializable {
         information.setHeaderText(null);
         information.setContentText(mensaje);
         information.showAndWait();
+    }
+    
+    public void recibirDatos(String email,String pass){
+        txtEmailLogin.setText(email);
+        txtPasswordLogin.setText(pass);
     }
 }
