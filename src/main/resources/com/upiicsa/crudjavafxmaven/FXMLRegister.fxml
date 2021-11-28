@@ -154,7 +154,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="67.0" prefWidth="316.0">
                                  <children>
-                                    <TextField fx:id="txtAMaterno" layoutY="2.0" promptText="Apellido materno" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
+                                    <TextField fx:id="txtAMaterno" layoutY="2.0" promptText="Apellido Materno" styleClass="txt-logeo" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0" />
                                  </children>
                               </AnchorPane>
                            </children>
