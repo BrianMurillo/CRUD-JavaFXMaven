@@ -19,8 +19,8 @@ public class UserDAO {
     private User user = new User();
     private Conexion conexion = Conexion.getInstance();
     
-    private boolean registrarUsuario(User user){
-        String sql="INSERT INTO(nombre,apellido_paterno,apellido_materno,edad,telefono,email,password,palabra_secreta,rol) VALUES(?,?,?,?,?,?,?,?,?)";
+    public boolean registrarUsuario(User user){
+        String sql="INSERT INTO usuarios(nombre,apellido_paterno,apellido_materno,edad,telefono,email,password,palabra_secreta,rol) VALUES(?,?,?,?,?,?,?,?,?)";
         try {
             con = conexion.Conectar();
             ps = con.prepareStatement(sql);
@@ -34,6 +34,7 @@ public class UserDAO {
             ps.setString(8, user.getPalabraSecreta());
             ps.setString(9, "Empleado");
             ps.executeUpdate();
+            System.out.println("Registro Exitoso");
             return true;
         } catch (SQLException e) {
             System.out.println(e.toString());

@@ -33,9 +33,7 @@ public class Conexion {
             System.out.println(e.toString());
             System.out.println("Error de conexion");
             mostrarVentanaInformativa("Infomación", e.toString());
-        } finally {
-            conexion.close();
-        }
+        } 
         return conexion;
     }
     

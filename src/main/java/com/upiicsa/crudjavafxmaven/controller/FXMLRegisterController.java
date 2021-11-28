@@ -5,6 +5,8 @@
  */
 package com.upiicsa.crudjavafxmaven.controller;
 
+import com.upiicsa.crudjavafxmaven.model.User;
+import com.upiicsa.crudjavafxmaven.model.UserDAO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -74,13 +76,14 @@ public class FXMLRegisterController implements Initializable {
     private TextField txtVerPassword;
     @FXML
     private TextField txtVerPasswordConfirm;
-
+    private User user = new User();
+    private UserDAO userDAO;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        this.userDAO = new UserDAO();
     }    
 
     @FXML
@@ -123,13 +126,40 @@ public class FXMLRegisterController implements Initializable {
         } else {
             txtVerPasswordConfirm.setVisible(false);
             txtConfirmarPassword.setVisible(true);
-            txtConfirmarPassword.setText(txtVerPassword.getText());
+            txtConfirmarPassword.setText(txtVerPasswordConfirm.getText());
         }
         verPass2++;
     }
 
     @FXML
     private void btnRegisterOnAction(ActionEvent event) {
+        boolean resultadoRegistro;
+        if(!"".equals(txtNombre.getText()) && !"".equals(txtAPaterno.getText()) && !"".equals(txtAMaterno.getText()) && !"".equals(txtEdad.getText()) && !"".equals(txtEmail.getText()) && !"".equals(txtPassword.getText()) && !"".equals(txtPalabraSecreta.getText())){
+            if (txtPassword.getText().equals(txtConfirmarPassword.getText())) {
+                user.setNombre(txtNombre.getText());
+                user.setApellidoPaterno(txtAPaterno.getText());
+                user.setApellidoMaterno(txtAMaterno.getText());
+                user.setEdad(Integer.parseInt(txtEdad.getText()));
+                user.setTelefono(txtTelefono.getText());
+                user.setEmail(txtEmail.getText());
+                if (verPass % 2 == 0) {
+                    user.setPassword(txtPassword.getText());
+                } else {
+                    user.setPassword(txtVerPassword.getText());
+                }
+                user.setPalabraSecreta(txtPalabraSecreta.getText());
+                resultadoRegistro = userDAO.registrarUsuario(user);
+                if(resultadoRegistro){
+                    mostrarInformacion("Infomación", "Registro Exitoso");
+                } else {
+                    mostrarInformacion("Información", "Error al registrar usuario");
+                }
+            } else {
+                mostrarInformacion("Información", "Las dos contraseñas deben ser iguales");
+            }
+        } else {
+            mostrarInformacion("Información", "Ingresar datos para completar el registro");
+        }
     }
 
     @FXML
