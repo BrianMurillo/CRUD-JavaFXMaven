@@ -239,9 +239,9 @@ public class FXMLRegisterController implements Initializable {
     }
 
     @FXML
-    private void txtNombreOnKeyPressed(KeyEvent event) {
+    private void txtNombreOnKeyPressed(KeyEvent event) {      
         if(event.getCode() == KeyCode.ENTER){
-            if(!"".equals(txtNombre.getText())){
+            if(!"".equals(txtNombre.getText())){               
                 txtAPaterno.requestFocus();
             } else {
                 mostrarInformacion("Información", "Ingresar Nombre");
