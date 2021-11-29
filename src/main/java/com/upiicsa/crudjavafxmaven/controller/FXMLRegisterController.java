@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -95,6 +96,49 @@ public class FXMLRegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         this.userDAO = new UserDAO();
         fxmlRegisterController = this;
+        //Validaciones de campos de texto y numericos
+        txtEdad.addEventFilter(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                String character = event.getCharacter();
+                if (!validacion.checkNumeric(character))
+                    event.consume();                    
+        }});
+        
+        txtNombre.addEventFilter(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                char car = event.getCharacter().charAt(0);
+                if (!(Character.isLetter(car) || Character.isSpaceChar(car))){
+                    event.consume();                    
+                }                    
+        }});
+        
+        txtAPaterno.addEventFilter(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                char car = event.getCharacter().charAt(0);
+                if (!(Character.isLetter(car) || Character.isSpaceChar(car))){
+                    event.consume();                    
+                }                    
+        }});
+        
+        txtAMaterno.addEventFilter(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                char car = event.getCharacter().charAt(0);
+                if (!(Character.isLetter(car) || Character.isSpaceChar(car))){
+                    event.consume();                    
+                }                    
+        }});
+        
+        txtTelefono.addEventFilter(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                String character = event.getCharacter();
+                if (!validacion.checkNumeric(character))
+                    event.consume();                    
+        }});  
     }    
 
     @FXML

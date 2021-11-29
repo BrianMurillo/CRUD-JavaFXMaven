@@ -43,4 +43,14 @@ public class Validacion {
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
+    
+    public boolean checkNumeric(String value) {
+        String number = value.replaceAll("\\s+", "");
+        for (int j = 0; j < number.length(); j++) {
+            if (!(((int) number.charAt(j) >= 47 && (int) number.charAt(j) <= 57))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
