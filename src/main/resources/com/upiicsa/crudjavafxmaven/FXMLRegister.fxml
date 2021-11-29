@@ -54,7 +54,7 @@
                   <AnchorPane prefHeight="143.0" prefWidth="365.0">
                      <children>
                         <Label alignment="CENTER" styleClass="titulo-welcome" text="Welcome" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0" />
-                        <Button fx:id="btnMinimiza" layoutX="265.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnMinimizaOnAction" prefHeight="16.0" prefWidth="17.0" styleClass="cerrar-minimiza-maximiza">
+                        <Button fx:id="btnMinimiza" layoutX="265.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnMinimizaOnAction" prefHeight="16.0" prefWidth="17.0">
                            <graphic>
                               <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -62,8 +62,12 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <styleClass>
+                              <String fx:value="cerrar-minimiza-maximiza" />
+                              <String fx:value="handCursor" />
+                           </styleClass>
                         </Button>
-                        <Button fx:id="btnMaximiza" layoutX="299.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnMaximizaOnAction" prefHeight="16.0" prefWidth="17.0" styleClass="cerrar-minimiza-maximiza">
+                        <Button fx:id="btnMaximiza" layoutX="299.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnMaximizaOnAction" prefHeight="16.0" prefWidth="17.0">
                            <graphic>
                               <ImageView fitHeight="17.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -71,8 +75,12 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <styleClass>
+                              <String fx:value="cerrar-minimiza-maximiza" />
+                              <String fx:value="handCursor" />
+                           </styleClass>
                         </Button>
-                        <Button fx:id="btnCerrar" layoutX="331.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnCerrarOnAction" prefHeight="16.0" prefWidth="17.0" styleClass="cerrar-minimiza-maximiza">
+                        <Button fx:id="btnCerrar" layoutX="331.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnCerrarOnAction" prefHeight="16.0" prefWidth="17.0">
                            <graphic>
                               <ImageView fitHeight="17.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -80,6 +88,10 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <styleClass>
+                              <String fx:value="cerrar-minimiza-maximiza" />
+                              <String fx:value="handCursor" />
+                           </styleClass>
                         </Button>
                      </children>
                   </AnchorPane>
@@ -275,6 +287,7 @@
                                        <styleClass>
                                           <String fx:value="ver-pass" />
                                           <String fx:value="fondo-login" />
+                                          <String fx:value="handCursor" />
                                        </styleClass>
                                     </Button>
                                  </children>
@@ -319,6 +332,7 @@
                                        <styleClass>
                                           <String fx:value="ver-pass" />
                                           <String fx:value="fondo-login" />
+                                          <String fx:value="handCursor" />
                                        </styleClass>
                                     </Button>
                                  </children>
@@ -359,6 +373,7 @@
                            <styleClass>
                               <String fx:value="button-logeo" />
                               <String fx:value="button-ventana" />
+                              <String fx:value="handCursor" />
                            </styleClass>
                         </Button>
                      </children>
@@ -369,6 +384,7 @@
                            <styleClass>
                               <String fx:value="button-logeo" />
                               <String fx:value="button-ventana" />
+                              <String fx:value="handCursor" />
                            </styleClass>
                         </Button>
                      </children>

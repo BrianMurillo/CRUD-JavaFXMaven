@@ -110,3 +110,7 @@ and open the template in the editor.
 .button.cerrar-minimiza-maximiza{
     -fx-background-color: white;
 }
+
+.handCursor{
+    -fx-cursor: hand;
+}
