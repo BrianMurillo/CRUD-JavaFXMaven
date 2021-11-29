@@ -343,10 +343,11 @@ public class FXMLRegisterController implements Initializable {
     private void txtEdadOnKeypressed(KeyEvent event) {
         if(event.getCode() == KeyCode.ENTER){
             if(!"".equals(txtEdad.getText())){
-                if(validacion.validarEdad(txtEdad.getText())){
+                if(validacion.validarEdad(txtEdad.getText()) && Integer.parseInt(txtEdad.getText()) < 105){
                     txtTelefono.requestFocus();
                 } else {
                     errorValidacionEdad();
+                    txtEdad.setText("");
                 }
             } else {
                 mostrarInformacion("Información", "Ingresar Edad");
