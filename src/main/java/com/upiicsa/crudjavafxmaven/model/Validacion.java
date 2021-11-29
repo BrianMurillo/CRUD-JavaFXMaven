@@ -25,6 +25,18 @@ public class Validacion {
         return matcher.find();
     }
     
+    public boolean validarNombre(String text){
+        return text.matches("^([A-Z]{1}[a-z]+[ ]?){1,2}$");
+    }  
+    
+    public boolean validarApellido(String text){
+        return text.matches("^([A-Z]{1}[a-z]{3,15})$");
+    }  
+    
+    public boolean validarEdad(String text){
+        return text.matches("^([1-9]{1}[0-9]?{1}[0-9]?{1})$");
+    }
+    
     public void mostrarInformacion(String titulo,String encabezado,String mensaje){
         alert.setTitle(titulo);
         alert.setHeaderText(encabezado);
