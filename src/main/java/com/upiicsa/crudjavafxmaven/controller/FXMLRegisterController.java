@@ -201,24 +201,19 @@ public class FXMLRegisterController implements Initializable {
                 user.setTelefono(txtTelefono.getText());
                 if (validacion.validarEmail(txtEmail.getText())) {
                     user.setEmail(txtEmail.getText());
-                    //Hasheamos el pass con Argon2
-                    Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-                    if (verPass % 2 == 0) {
-                        user.setPassword(txtPassword.getText());
-                        String hash = argon2.hash(1, 1024, 1, user.getPassword());
-                        user.setPassword(hash);
+                    if (validacion.validarNombre(txtNombre.getText())) {
+                        //Hasheamos el pass con Argon2
+                        hasheoPassword();
+                        user.setPalabraSecreta(txtPalabraSecreta.getText());
+                        resultadoRegistro = userDAO.registrarUsuario(user);
+                        if (resultadoRegistro) {
+                            mostrarInformacion("Infomación", "Registro Exitoso");
+                            abrirSceneLogin();
+                        } else {
+                            mostrarInformacion("Información", "Error al registrar usuario");
+                        }
                     } else {
-                        user.setPassword(txtVerPassword.getText());
-                        String hash = argon2.hash(1, 1024, 1, user.getPassword());
-                        user.setPassword(hash);
-                    }
-                    user.setPalabraSecreta(txtPalabraSecreta.getText());
-                    resultadoRegistro = userDAO.registrarUsuario(user);
-                    if (resultadoRegistro) {
-                        mostrarInformacion("Infomación", "Registro Exitoso");
-                        abrirSceneLogin();
-                    } else {
-                        mostrarInformacion("Información", "Error al registrar usuario");
+                        errorValidacionNombre();
                     }
                 } else {
                     errorValidacionCorreo();
@@ -290,8 +285,12 @@ public class FXMLRegisterController implements Initializable {
     @FXML
     private void txtNombreOnKeyPressed(KeyEvent event) {      
         if(event.getCode() == KeyCode.ENTER){
-            if(!"".equals(txtNombre.getText())){               
-                txtAPaterno.requestFocus();
+            if(!"".equals(txtNombre.getText())){  
+                if(validacion.validarNombre(txtNombre.getText())){
+                    txtAPaterno.requestFocus();
+                } else {
+                    errorValidacionNombre();
+                } 
             } else {
                 mostrarInformacion("Información", "Ingresar Nombre");
             }
@@ -389,5 +388,23 @@ public class FXMLRegisterController implements Initializable {
     private void errorValidacionCorreo() {
         validacion.mostrarInformacion("Información", "Correo electronico invalido", "Ejemplo: muso@gmail.com");
         txtEmail.requestFocus();
+    }
+    
+    public void errorValidacionNombre() {
+        validacion.mostrarInformacion("Infomación", "Nombre Incorrecto", "Ejemplo: Miguel Angel");
+        txtNombre.requestFocus();
+    }
+
+    private void hasheoPassword() {
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        if (verPass % 2 == 0) {
+            user.setPassword(txtPassword.getText());
+            String hash = argon2.hash(1, 1024, 1, user.getPassword());
+            user.setPassword(hash);
+        } else {
+            user.setPassword(txtVerPassword.getText());
+            String hash = argon2.hash(1, 1024, 1, user.getPassword());
+            user.setPassword(hash);
+        }
     }
 }
