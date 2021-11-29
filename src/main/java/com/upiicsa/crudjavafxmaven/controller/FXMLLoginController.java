@@ -6,6 +6,7 @@
 package com.upiicsa.crudjavafxmaven.controller;
 
 import com.upiicsa.crudjavafxmaven.model.Conexion;
+import com.upiicsa.crudjavafxmaven.model.Validacion;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -66,6 +67,7 @@ public class FXMLLoginController implements Initializable {
     Conexion instanciaSQL = Conexion.getInstance();
     FXMLLoginController fxmlLoginController;
     FXMLRegisterController fxmlRegisterController;
+    Validacion validacion = new Validacion();
     
     /**
      * Initializes the controller class.
@@ -166,7 +168,12 @@ public class FXMLLoginController implements Initializable {
     public void iniciarSesion(){
         try {
             if (!"".equals(txtEmailLogin.getText()) && !"".equals(txtPasswordLogin.getText())) {
-                instanciaSQL.Conectar();
+                if(validacion.validarEmail(txtEmailLogin.getText())){
+                    instanciaSQL.Conectar();
+                } else {
+                    mostrarInformacion("Información", "Ingrese un correo electronico valido");
+                    txtEmailLogin.requestFocus();
+                }
             } else {
                 mostrarInformacion("Información", "Ingresar Usuario y Password");
             }
