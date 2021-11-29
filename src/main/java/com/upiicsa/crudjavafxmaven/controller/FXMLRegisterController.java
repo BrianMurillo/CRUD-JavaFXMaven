@@ -7,6 +7,7 @@ package com.upiicsa.crudjavafxmaven.controller;
 
 import com.upiicsa.crudjavafxmaven.model.User;
 import com.upiicsa.crudjavafxmaven.model.UserDAO;
+import com.upiicsa.crudjavafxmaven.model.Validacion;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import java.io.IOException;
@@ -86,6 +87,7 @@ public class FXMLRegisterController implements Initializable {
     FXMLLoginController fxmlLoginController;
     //Scene Register
     FXMLRegisterController fxmlRegisterController;
+    Validacion validacion = new Validacion();
     /**
      * Initializes the controller class.
      */
@@ -104,7 +106,7 @@ public class FXMLRegisterController implements Initializable {
     @FXML
     private void btnMaximizaOnAction(ActionEvent event) {
         Stage stage = (Stage) this.btnMaximiza.getScene().getWindow();
-        if(contador%2 == 0){
+        if (contador % 2 == 0) {
             stage.setMaximized(true);
         } else {
             stage.setMaximized(false);
@@ -117,18 +119,17 @@ public class FXMLRegisterController implements Initializable {
         alerta.setTitle("Confirmación");
         alerta.setHeaderText(null);
         alerta.setContentText("¿Desea cerrar la aplicación?");
-        
+
         Optional<ButtonType> result = alerta.showAndWait();
-        if(result.get() == ButtonType.OK){
+        if (result.get() == ButtonType.OK) {
             Stage stage = (Stage) this.btnCerrar.getScene().getWindow();
             stage.close();
         }
     }
 
-
     @FXML
     private void btnVerContraseñaConfirmarOnAction(ActionEvent event) {
-        if(verPass2%2 == 0){
+        if (verPass2 % 2 == 0) {
             txtConfirmarPassword.setVisible(false);
             txtVerPasswordConfirm.setVisible(true);
             txtVerPasswordConfirm.setText(txtConfirmarPassword.getText());
@@ -144,35 +145,39 @@ public class FXMLRegisterController implements Initializable {
     private void btnRegisterOnAction(ActionEvent event) {
         registrarUsuario();
     }
-    
-    public void registrarUsuario(){
+
+    public void registrarUsuario() {
         boolean resultadoRegistro;
-        if(!"".equals(txtNombre.getText()) && !"".equals(txtAPaterno.getText()) && !"".equals(txtAMaterno.getText()) && !"".equals(txtEdad.getText()) && !"".equals(txtEmail.getText()) && !"".equals(txtPassword.getText()) && !"".equals(txtPalabraSecreta.getText())){
+        if (!"".equals(txtNombre.getText()) && !"".equals(txtAPaterno.getText()) && !"".equals(txtAMaterno.getText()) && !"".equals(txtEdad.getText()) && !"".equals(txtEmail.getText()) && !"".equals(txtPassword.getText()) && !"".equals(txtPalabraSecreta.getText())) {
             if (txtPassword.getText().equals(txtConfirmarPassword.getText())) {
                 user.setNombre(txtNombre.getText());
                 user.setApellidoPaterno(txtAPaterno.getText());
                 user.setApellidoMaterno(txtAMaterno.getText());
                 user.setEdad(Integer.parseInt(txtEdad.getText()));
                 user.setTelefono(txtTelefono.getText());
-                user.setEmail(txtEmail.getText());
-                //Hasheamos el pass con Argon2
-                Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-                if (verPass % 2 == 0) {
-                    user.setPassword(txtPassword.getText());
-                    String hash = argon2.hash(1,1024,1,user.getPassword());
-                    user.setPassword(hash);
+                if (validacion.validarEmail(txtEmail.getText())) {
+                    user.setEmail(txtEmail.getText());
+                    //Hasheamos el pass con Argon2
+                    Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+                    if (verPass % 2 == 0) {
+                        user.setPassword(txtPassword.getText());
+                        String hash = argon2.hash(1, 1024, 1, user.getPassword());
+                        user.setPassword(hash);
+                    } else {
+                        user.setPassword(txtVerPassword.getText());
+                        String hash = argon2.hash(1, 1024, 1, user.getPassword());
+                        user.setPassword(hash);
+                    }
+                    user.setPalabraSecreta(txtPalabraSecreta.getText());
+                    resultadoRegistro = userDAO.registrarUsuario(user);
+                    if (resultadoRegistro) {
+                        mostrarInformacion("Infomación", "Registro Exitoso");
+                        abrirSceneLogin();
+                    } else {
+                        mostrarInformacion("Información", "Error al registrar usuario");
+                    }
                 } else {
-                    user.setPassword(txtVerPassword.getText());
-                    String hash = argon2.hash(1,1024,1,user.getPassword());
-                    user.setPassword(hash);
-                }
-                user.setPalabraSecreta(txtPalabraSecreta.getText());
-                resultadoRegistro = userDAO.registrarUsuario(user);
-                if(resultadoRegistro){
-                    mostrarInformacion("Infomación", "Registro Exitoso");
-                    abrirSceneLogin();
-                } else {
-                    mostrarInformacion("Información", "Error al registrar usuario");
+                    errorValidacionCorreo();
                 }
             } else {
                 mostrarInformacion("Información", "Las dos contraseñas deben ser iguales");
@@ -293,7 +298,11 @@ public class FXMLRegisterController implements Initializable {
     private void txtEmailOnKeyPressed(KeyEvent event) {
         if(event.getCode() == KeyCode.ENTER){
             if(!"".equals(txtEmail.getText())){
-                txtPassword.requestFocus();
+                if(validacion.validarEmail(txtEmail.getText())){
+                    txtPassword.requestFocus();
+                } else {
+                    errorValidacionCorreo();
+                }
             } else {
                 mostrarInformacion("Información", "Ingresar Email");
             }
@@ -331,5 +340,10 @@ public class FXMLRegisterController implements Initializable {
                 mostrarInformacion("Información", "Ingresar una palabra clave, la cual sera necesaria para cuando requiera cambiar contraseña");
             }
         }
+    }
+    
+    private void errorValidacionCorreo() {
+        validacion.mostrarInformacion("Información", "Correo electronico invalido", "Ejemplo: muso@gmail.com");
+        txtEmail.requestFocus();
     }
 }

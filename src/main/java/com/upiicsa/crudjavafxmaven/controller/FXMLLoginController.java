@@ -153,7 +153,11 @@ public class FXMLLoginController implements Initializable {
     private void txtLoginOnKeyPressed(KeyEvent event) {
         if(event.getCode() == KeyCode.ENTER){
             if(!"".equals(txtEmailLogin.getText())){
-                txtPasswordLogin.requestFocus();
+                if(validacion.validarEmail(txtEmailLogin.getText())){
+                    txtPasswordLogin.requestFocus();
+                } else {
+                    errorValidacionCorreo();
+                }
             } else {
                 mostrarInformacion("Información", "Ingresar Email");
             }
@@ -171,7 +175,7 @@ public class FXMLLoginController implements Initializable {
                 if(validacion.validarEmail(txtEmailLogin.getText())){
                     instanciaSQL.Conectar();
                 } else {
-                    mostrarInformacion("Información", "Ingrese un correo electronico valido");
+                    validacion.mostrarInformacion("Información", "Correo electronico invalido", "Ejemplo: muso@gmail.com");
                     txtEmailLogin.requestFocus();
                 }
             } else {
@@ -204,5 +208,10 @@ public class FXMLLoginController implements Initializable {
                 mostrarInformacion("Información", "Ingresar Password");
             }
         }
+    }
+
+    private void errorValidacionCorreo() {
+        validacion.mostrarInformacion("Información", "Correo electronico invalido", "Ejemplo: muso@gmail.com");
+        txtEmailLogin.requestFocus();
     }
 }
