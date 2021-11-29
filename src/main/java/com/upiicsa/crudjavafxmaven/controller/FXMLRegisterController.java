@@ -193,25 +193,33 @@ public class FXMLRegisterController implements Initializable {
     public void registrarUsuario() {
         boolean resultadoRegistro;
         if (!"".equals(txtNombre.getText()) && !"".equals(txtAPaterno.getText()) && !"".equals(txtAMaterno.getText()) && !"".equals(txtEdad.getText()) && !"".equals(txtEmail.getText()) && !"".equals(txtPassword.getText()) && !"".equals(txtPalabraSecreta.getText())) {
-            if (txtPassword.getText().equals(txtConfirmarPassword.getText())) {
-                user.setApellidoPaterno(txtAPaterno.getText());
-                user.setApellidoMaterno(txtAMaterno.getText());
-                user.setEdad(Integer.parseInt(txtEdad.getText()));
+            if (txtPassword.getText().equals(txtConfirmarPassword.getText())) {                              
                 user.setTelefono(txtTelefono.getText());
                 if (validacion.validarEmail(txtEmail.getText())) {
                     user.setEmail(txtEmail.getText());
                     if (validacion.validarNombre(txtNombre.getText())) {
                         user.setNombre(txtNombre.getText());
                         if (validacion.validarApellido(txtAPaterno.getText())) {
-                            //Hasheamos el pass con Argon2
-                            hasheoPassword();
-                            user.setPalabraSecreta(txtPalabraSecreta.getText());
-                            resultadoRegistro = userDAO.registrarUsuario(user);
-                            if (resultadoRegistro) {
-                                mostrarInformacion("Infomación", "Registro Exitoso");
-                                abrirSceneLogin();
+                            user.setApellidoPaterno(txtAPaterno.getText());
+                            if (validacion.validarApellido(txtAMaterno.getText())) {
+                                user.setApellidoMaterno(txtAMaterno.getText());
+                                if (validacion.validarEdad(txtEdad.getText()) && Integer.parseInt(txtEdad.getText()) < 105) {
+                                    user.setEdad(Integer.parseInt(txtEdad.getText()));
+                                    //Hasheamos el pass con Argon2
+                                    hasheoPassword();
+                                    user.setPalabraSecreta(txtPalabraSecreta.getText());
+                                    resultadoRegistro = userDAO.registrarUsuario(user);
+                                    if (resultadoRegistro) {
+                                        mostrarInformacion("Infomación", "Registro Exitoso");
+                                        abrirSceneLogin();
+                                    } else {
+                                        mostrarInformacion("Información", "Error al registrar usuario");
+                                    }
+                                } else {
+                                    errorValidacionEdad();
+                                }
                             } else {
-                                mostrarInformacion("Información", "Error al registrar usuario");
+                                errorValidacionAMaterno();
                             }
                         } else {
                             errorValidacionAPaterno();
@@ -320,7 +328,11 @@ public class FXMLRegisterController implements Initializable {
     private void txtAMaternoOnKeyPressed(KeyEvent event) {
         if(event.getCode() == KeyCode.ENTER){
             if(!"".equals(txtAMaterno.getText())){
-                txtEdad.requestFocus();
+                if(validacion.validarApellido(txtAMaterno.getText())){
+                    txtEdad.requestFocus();
+                } else {
+                    errorValidacionAMaterno();
+                }
             } else {
                 mostrarInformacion("Información", "Ingresar Apellido Materno");
             }
@@ -331,7 +343,11 @@ public class FXMLRegisterController implements Initializable {
     private void txtEdadOnKeypressed(KeyEvent event) {
         if(event.getCode() == KeyCode.ENTER){
             if(!"".equals(txtEdad.getText())){
-                txtTelefono.requestFocus();
+                if(validacion.validarEdad(txtEdad.getText())){
+                    txtTelefono.requestFocus();
+                } else {
+                    errorValidacionEdad();
+                }
             } else {
                 mostrarInformacion("Información", "Ingresar Edad");
             }
@@ -353,6 +369,7 @@ public class FXMLRegisterController implements Initializable {
                     txtPassword.requestFocus();
                 } else {
                     errorValidacionCorreo();
+                    txtEdad.setText("");
                 }
             } else {
                 mostrarInformacion("Información", "Ingresar Email");
@@ -404,8 +421,19 @@ public class FXMLRegisterController implements Initializable {
     }
     
     public void errorValidacionAPaterno() {
-        validacion.mostrarInformacion("Información", "Apellido Paterno Incorrecto", "Murillo");
+        validacion.mostrarInformacion("Información", "Apellido Paterno Incorrecto", "Ejemplo: Murillo");
         txtAPaterno.requestFocus();
+    }
+    
+    public void errorValidacionAMaterno() {
+        validacion.mostrarInformacion("Información", "Apellido Materno Incorrecto", "Ejemplo: Salas");
+        txtAMaterno.requestFocus();
+    }
+    
+    public void errorValidacionEdad() {
+        validacion.mostrarInformacion("Información", "Edad Incorrecta", "Ejemplo: 25");
+        txtEdad.setText("");
+        txtEdad.requestFocus();
     }
 
     private void hasheoPassword() {
