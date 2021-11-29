@@ -194,7 +194,6 @@ public class FXMLRegisterController implements Initializable {
         boolean resultadoRegistro;
         if (!"".equals(txtNombre.getText()) && !"".equals(txtAPaterno.getText()) && !"".equals(txtAMaterno.getText()) && !"".equals(txtEdad.getText()) && !"".equals(txtEmail.getText()) && !"".equals(txtPassword.getText()) && !"".equals(txtPalabraSecreta.getText())) {
             if (txtPassword.getText().equals(txtConfirmarPassword.getText())) {
-                user.setNombre(txtNombre.getText());
                 user.setApellidoPaterno(txtAPaterno.getText());
                 user.setApellidoMaterno(txtAMaterno.getText());
                 user.setEdad(Integer.parseInt(txtEdad.getText()));
@@ -202,15 +201,20 @@ public class FXMLRegisterController implements Initializable {
                 if (validacion.validarEmail(txtEmail.getText())) {
                     user.setEmail(txtEmail.getText());
                     if (validacion.validarNombre(txtNombre.getText())) {
-                        //Hasheamos el pass con Argon2
-                        hasheoPassword();
-                        user.setPalabraSecreta(txtPalabraSecreta.getText());
-                        resultadoRegistro = userDAO.registrarUsuario(user);
-                        if (resultadoRegistro) {
-                            mostrarInformacion("Infomación", "Registro Exitoso");
-                            abrirSceneLogin();
+                        user.setNombre(txtNombre.getText());
+                        if (validacion.validarApellido(txtAPaterno.getText())) {
+                            //Hasheamos el pass con Argon2
+                            hasheoPassword();
+                            user.setPalabraSecreta(txtPalabraSecreta.getText());
+                            resultadoRegistro = userDAO.registrarUsuario(user);
+                            if (resultadoRegistro) {
+                                mostrarInformacion("Infomación", "Registro Exitoso");
+                                abrirSceneLogin();
+                            } else {
+                                mostrarInformacion("Información", "Error al registrar usuario");
+                            }
                         } else {
-                            mostrarInformacion("Información", "Error al registrar usuario");
+                            errorValidacionAPaterno();
                         }
                     } else {
                         errorValidacionNombre();
@@ -301,7 +305,11 @@ public class FXMLRegisterController implements Initializable {
     private void txtAPaternoOnKeyPressed(KeyEvent event) {
         if(event.getCode() == KeyCode.ENTER){
             if(!"".equals(txtAPaterno.getText())){
-                txtAMaterno.requestFocus();
+                if(validacion.validarApellido(txtAPaterno.getText())){
+                    txtAMaterno.requestFocus();
+                } else {
+                    errorValidacionAPaterno();
+                }
             } else {
                 mostrarInformacion("Infomación", "Ingresar Apellido Paterno");
             }
@@ -393,6 +401,11 @@ public class FXMLRegisterController implements Initializable {
     public void errorValidacionNombre() {
         validacion.mostrarInformacion("Infomación", "Nombre Incorrecto", "Ejemplo: Miguel Angel");
         txtNombre.requestFocus();
+    }
+    
+    public void errorValidacionAPaterno() {
+        validacion.mostrarInformacion("Información", "Apellido Paterno Incorrecto", "Murillo");
+        txtAPaterno.requestFocus();
     }
 
     private void hasheoPassword() {
