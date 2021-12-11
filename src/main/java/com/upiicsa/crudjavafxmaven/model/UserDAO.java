@@ -39,13 +39,18 @@ public class UserDAO {
         } catch (SQLException e) {
             System.out.println(e.toString());
             return false;
+        } catch (NullPointerException e){
+            System.out.println(e.toString());
         } finally {
             try {               
                 ps.close();
                 con.close();
             } catch (SQLException e) {
                 System.out.println(e.toString());
-            }
+            } catch (NullPointerException e){
+                System.out.println(e.toString());
+            } 
         }
+        return false;
     }
 }

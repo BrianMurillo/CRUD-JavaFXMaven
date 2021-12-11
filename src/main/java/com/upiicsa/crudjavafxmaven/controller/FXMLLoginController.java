@@ -65,16 +65,13 @@ public class FXMLLoginController implements Initializable {
     @FXML
     private TextField txtVerPassword;
     Conexion instanciaSQL = Conexion.getInstance();
-    FXMLLoginController fxmlLoginController;
     FXMLRegisterController fxmlRegisterController;
-    Validacion validacion = new Validacion();
-    
+    Validacion validacion = new Validacion();   
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        fxmlLoginController = this;
     }    
 
     @FXML
@@ -82,7 +79,7 @@ public class FXMLLoginController implements Initializable {
         alerta.setTitle("Confirmación");
         alerta.setHeaderText(null);
         alerta.setContentText("¿Desea cerrar la aplicación?");
-        
+        //Optional recibe un objeto, con result.get() regresa el tipo de objeto y lo comparamos.
         Optional<ButtonType> result = alerta.showAndWait();
         if(result.get() == ButtonType.OK){
             Stage stage = (Stage) this.btnCerrar.getScene().getWindow();

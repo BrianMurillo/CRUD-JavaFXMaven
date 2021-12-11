@@ -37,6 +37,14 @@ public class Validacion {
         return text.matches("^([1-9]{1}[0-9]?{1}[0-9]?{1})$");
     }
     
+    public boolean validarTelefono(String text){
+        if(text.length() == 10){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public void mostrarInformacion(String titulo,String encabezado,String mensaje){
         alert.setTitle(titulo);
         alert.setHeaderText(encabezado);
