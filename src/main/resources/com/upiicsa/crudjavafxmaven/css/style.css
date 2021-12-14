@@ -114,3 +114,8 @@ and open the template in the editor.
 .handCursor{
     -fx-cursor: hand;
 }
+
+.degradado{
+    -fx-background-color: linear-gradient(to right top, #90e0ef, #16edee, #00f7d1, #00fe99, #00ff41);
+    -fx-opacity: .80;
+}

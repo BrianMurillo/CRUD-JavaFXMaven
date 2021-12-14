@@ -13,10 +13,10 @@
 
 <AnchorPane id="AnchorPane" fx:id="pane" prefHeight="338.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.upiicsa.crudjavafxmaven.controller.FXMLPreloadingController">
    <children>
-      <AnchorPane layoutX="-12.0" layoutY="7.0" prefHeight="365.0" prefWidth="569.0" style="-fx-background-color: #B6D8FC; -fx-border-color: #869FBA; -fx-border-width: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="-12.0" layoutY="7.0" prefHeight="365.0" prefWidth="569.0" style="-fx-border-color: white; -fx-border-width: 6;" styleClass="degradado" stylesheets="@css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Line endX="497.5" layoutX="214.0" layoutY="266.0" startX="-204.5" stroke="#869fba" strokeWidth="4.0" AnchorPane.rightAnchor="0.0" />
-            <Text fill="#1b6bbf" layoutX="145.0" layoutY="91.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Neutrales Digital" wrappingWidth="559.33203125" AnchorPane.leftAnchor="145.0">
+            <Line endX="497.5" layoutX="214.0" layoutY="266.0" startX="-204.5" stroke="WHITE" strokeWidth="4.0" AnchorPane.rightAnchor="0.0" />
+            <Text fill="WHITE" layoutX="145.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Neutrales Digital" wrappingWidth="559.33203125" AnchorPane.leftAnchor="145.0">
                <font>
                   <Font name="Bookman Old Style" size="66.0" />
                </font>
@@ -26,12 +26,12 @@
                   <Font name="Bookman Old Style" size="19.0" />
                </font>
             </Text>
-            <Text fill="#869fba" layoutX="300.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2022 © NEUTRALES DIGITAL  Brian Murillo Salas" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="2.0">
+            <Text fill="WHITE" layoutX="300.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2022 © NEUTRALES DIGITAL  Brian Murillo Salas" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="2.0">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font></Text>
             <ProgressBar fx:id="progressBar" layoutX="419.0" layoutY="218.0" prefHeight="21.0" prefWidth="208.0" progress="0.0" style="-fx-background-color: #F3722C;" AnchorPane.rightAnchor="24.0" />
-            <Label layoutX="480.0" layoutY="237.0" opacity="0.7" prefHeight="25.0" prefWidth="76.0" text="Loading..." textFill="#030000">
+            <Label layoutX="480.0" layoutY="237.0" prefHeight="25.0" prefWidth="76.0" text="Loading..." textFill="WHITE">
                <font>
                   <Font name="Bookman Old Style" size="13.0" />
                </font></Label>
@@ -43,18 +43,18 @@
                   <Bloom threshold="0.24" />
                </effect>
             </ImageView>
-            <Line endX="9.5" endY="80.0" layoutX="126.0" layoutY="252.0" startX="9.5" startY="-247.0" stroke="#869fba" strokeWidth="4.0" AnchorPane.bottomAnchor="0.0" />
-            <Arc fill="#748aa2" layoutX="68.0" layoutY="157.0" length="270.0" opacity="0.22" radiusX="20.0" radiusY="19.0" startAngle="136.1" stroke="WHITE" strokeType="INSIDE" type="ROUND">
+            <Line endX="9.5" endY="80.0" layoutX="126.0" layoutY="252.0" startX="9.5" startY="-247.0" stroke="WHITE" strokeWidth="4.0" AnchorPane.bottomAnchor="0.0" />
+            <Arc fill="#748aa2" layoutX="68.0" layoutY="157.0" length="270.0" opacity="0.49" radiusX="20.0" radiusY="19.0" startAngle="136.1" stroke="WHITE" strokeType="INSIDE" type="ROUND">
                <effect>
                   <Bloom threshold="0.03" />
                </effect>
             </Arc>
-            <Arc fill="#748aa2" layoutX="68.0" layoutY="202.0" length="270.0" opacity="0.22" radiusX="16.0" radiusY="15.0" startAngle="136.1" stroke="WHITE" strokeType="INSIDE" type="ROUND">
+            <Arc fill="#748aa2" layoutX="68.0" layoutY="202.0" length="270.0" opacity="0.49" radiusX="16.0" radiusY="15.0" startAngle="136.1" stroke="WHITE" strokeType="INSIDE" type="ROUND">
                <effect>
                   <Bloom threshold="0.03" />
                </effect>
             </Arc>
-            <Arc fill="#748aa2" layoutX="68.0" layoutY="237.0" length="270.0" opacity="0.22" radiusX="12.0" radiusY="12.0" startAngle="136.1" stroke="WHITE" strokeType="INSIDE" type="ROUND">
+            <Arc fill="#748aa2" layoutX="68.0" layoutY="237.0" length="270.0" opacity="0.49" radiusX="12.0" radiusY="12.0" startAngle="136.1" stroke="WHITE" strokeType="INSIDE" type="ROUND">
                <effect>
                   <Bloom threshold="0.03" />
                </effect>

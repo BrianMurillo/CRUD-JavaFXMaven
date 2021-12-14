@@ -53,7 +53,7 @@
                <children>
                   <AnchorPane prefHeight="143.0" prefWidth="365.0">
                      <children>
-                        <Label alignment="CENTER" styleClass="titulo-welcome" text="Welcome" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0" />
+                        <Label alignment="CENTER" layoutX="75.0" layoutY="17.0" prefHeight="68.0" prefWidth="215.0" styleClass="titulo-welcome" text="Registration" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="17.0" />
                         <Button fx:id="btnMinimiza" layoutX="265.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnMinimizaOnAction" prefHeight="16.0" prefWidth="17.0">
                            <graphic>
                               <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -374,6 +374,7 @@
                               <String fx:value="button-logeo" />
                               <String fx:value="button-ventana" />
                               <String fx:value="handCursor" />
+                              <String fx:value="degradado" />
                            </styleClass>
                         </Button>
                      </children>
@@ -385,6 +386,7 @@
                               <String fx:value="button-logeo" />
                               <String fx:value="button-ventana" />
                               <String fx:value="handCursor" />
+                              <String fx:value="degradado" />
                            </styleClass>
                         </Button>
                      </children>
