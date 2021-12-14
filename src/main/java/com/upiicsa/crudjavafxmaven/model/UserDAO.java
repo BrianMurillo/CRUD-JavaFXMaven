@@ -54,14 +54,13 @@ public class UserDAO {
         return false;
     }
     
-    public User iniciarSesion(String email,String pass){
-        String sql="SELECT usuarios WHERE email=? and password=?";
+    public User iniciarSesion(String email){
+        String sql="SELECT * FROM usuarios WHERE email=?";
         User user = new User();
         try {
             con = conexion.Conectar();
             ps = con.prepareStatement(sql);
             ps.setString(1, email);
-            ps.setString(2, pass);
             rs = ps.executeQuery();
             if(rs.next()){
                 user.setEmail(rs.getString("email"));

@@ -6,10 +6,13 @@
 package com.upiicsa.crudjavafxmaven.controller;
 
 import com.upiicsa.crudjavafxmaven.model.Conexion;
+import com.upiicsa.crudjavafxmaven.model.User;
+import com.upiicsa.crudjavafxmaven.model.UserDAO;
 import com.upiicsa.crudjavafxmaven.model.Validacion;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -70,6 +73,8 @@ public class FXMLLoginController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    UserDAO userDao= new UserDAO();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }    
@@ -148,29 +153,54 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void txtLoginOnKeyPressed(KeyEvent event) {
-        if(event.getCode() == KeyCode.ENTER){
-            if(!"".equals(txtEmailLogin.getText())){
-                if(validacion.validarEmail(txtEmailLogin.getText())){
-                    txtPasswordLogin.requestFocus();
+        if (event.getCode() == KeyCode.ENTER) {
+            if (!"".equals(txtEmailLogin.getText())) {
+                if (validacion.validarEmail(txtEmailLogin.getText())) {
+                    if(verPass % 2 == 0){
+                        txtPasswordLogin.requestFocus();
+                    } else{
+                        txtVerPassword.requestFocus();
+                    }
                 } else {
                     errorValidacionCorreo();
                 }
             } else {
                 mostrarInformacion("Información", "Ingresar Email");
             }
-        }   
-    } 
+        }
+    }
 
     @FXML
     private void btnLoginOnAction(ActionEvent event) {
         iniciarSesion();
     }
-    
-    public void iniciarSesion(){
+
+    public void iniciarSesion() {
         try {
-            if (!"".equals(txtEmailLogin.getText()) && !"".equals(txtPasswordLogin.getText())) {
-                if(validacion.validarEmail(txtEmailLogin.getText())){
-                    instanciaSQL.Conectar();
+            if (!"".equals(txtEmailLogin.getText()) && !"".equals(txtPasswordLogin.getText()) || !"".equals(txtVerPassword.getText())) {
+                if (validacion.validarEmail(txtEmailLogin.getText())) {
+                    User user = new User();
+                    Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+                    String hash = "";
+                    user = userDao.iniciarSesion(txtEmailLogin.getText());
+                    hash = user.getPassword();
+                    if (user.getEmail() != null) {
+                        if (verPass % 2 == 0) {
+                            if (argon2.verify(hash, txtPasswordLogin.getText())) {
+                                mostrarInformacion("Información", "BIENVENIDO");
+                            } else {
+                                mostrarInformacion("Información", "Error al iniciar Sesión");
+                            }
+                        } else {
+                            if (argon2.verify(hash, txtVerPassword.getText())) {
+                                mostrarInformacion("Información", "BIENVENIDO");
+                            } else {
+                                mostrarInformacion("Información", "Error al iniciar Sesión");
+                            }
+                        }
+                    } else {
+                        mostrarInformacion("Información", "Error al iniciar Sesión");
+                    }
                 } else {
                     validacion.mostrarInformacion("Información", "Correo electronico invalido", "Ejemplo: muso@gmail.com");
                     txtEmailLogin.requestFocus();
@@ -178,7 +208,7 @@ public class FXMLLoginController implements Initializable {
             } else {
                 mostrarInformacion("Información", "Ingresar Usuario y Password");
             }
-        } catch (SQLException | NullPointerException ex) {
+        } catch (NullPointerException ex) {
             System.out.println(ex.toString());
         }
     }
@@ -206,9 +236,20 @@ public class FXMLLoginController implements Initializable {
             }
         }
     }
-
+    
+    @FXML
+    private void txtVerPasswordOnKeyPressed(KeyEvent event) {
+         if(event.getCode() == KeyCode.ENTER){
+            if(!"".equals(txtVerPassword.getText())){
+                iniciarSesion();
+            } else {
+                mostrarInformacion("Información", "Ingresar Password");
+            }
+        }   
+    }
+    
     private void errorValidacionCorreo() {
         validacion.mostrarInformacion("Información", "Correo electronico invalido", "Ejemplo: muso@gmail.com");
         txtEmailLogin.requestFocus();
-    }
+    }   
 }

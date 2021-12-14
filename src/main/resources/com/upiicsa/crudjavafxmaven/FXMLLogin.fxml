@@ -62,7 +62,7 @@
                                     </Pane>
                                     <Pane prefHeight="39.0" prefWidth="364.0">
                                        <children>
-                                          <TextField fx:id="txtVerPassword" layoutY="1.0" prefHeight="35.0" prefWidth="207.0" styleClass="txt-logeo" />
+                                          <TextField fx:id="txtVerPassword" layoutY="1.0" onKeyPressed="#txtVerPasswordOnKeyPressed" prefHeight="35.0" prefWidth="207.0" styleClass="txt-logeo" />
                                           <PasswordField fx:id="txtPasswordLogin" layoutY="1.0" onKeyPressed="#txtPassOnKeyPressed" prefHeight="37.0" prefWidth="207.0" promptText="*********" styleClass="txt-logeo" />
                                        </children>
                                     </Pane>
