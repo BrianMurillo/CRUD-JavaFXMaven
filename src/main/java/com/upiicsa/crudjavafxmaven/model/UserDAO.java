@@ -53,4 +53,35 @@ public class UserDAO {
         }
         return false;
     }
+    
+    public User iniciarSesion(String email,String pass){
+        String sql="SELECT usuarios WHERE email=? and password=?";
+        User user = new User();
+        try {
+            con = conexion.Conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        } catch (NullPointerException e){
+            System.out.println(e.toString());
+        } finally{
+            try {
+                rs.close();
+                ps.close();
+                con.close();
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            } catch (NullPointerException e){
+                System.out.println(e.toString());
+            }
+        }
+        return user;
+    }
 }
