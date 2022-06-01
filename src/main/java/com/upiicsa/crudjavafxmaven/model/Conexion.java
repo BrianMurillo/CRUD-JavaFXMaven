@@ -18,10 +18,10 @@ public class Conexion {
     private static Conexion instancia = null;
     Alert pantallaInformacion = new Alert(Alert.AlertType.INFORMATION);
     Connection conexion = null;
-    private String user = "demo-54";
-    private String pass = "admin$54";
-    String url = "jdbc:sqlserver://servidor-54.database.windows.net:1433;database=demoSQL;user=" + user + "@servidor-54;password=" + pass + ";encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-
+    private String user = "server-54-admin";
+    private String pass = "musovespo54$";
+    private String url ="jdbc:sqlserver://sql-server54.database.windows.net:1433;database=sql-server;user="+user+"@sql-server54;password="+pass+";encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+    
     private Conexion() {
     }
  
